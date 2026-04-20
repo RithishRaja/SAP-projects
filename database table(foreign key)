@@ -1,0 +1,18 @@
+@EndUserText.label : 'foreign key'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table zdept_detail_2 {
+
+  key client : abap.clnt not null;
+  key emp_id : zemp_id_10 not null;
+  emp_name   : zemp_name_10;
+  emp_salary : zemp_salary_10;
+  @AbapCatalog.foreignKey.screenCheck : false
+  dept_id    : zdept_id_10
+    with foreign key zdept_detail_10
+      where client = zdept_detail_2.client
+        and dept_id = zdept_detail_2.dept_id;
+
+}
