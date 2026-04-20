@@ -1,0 +1,14 @@
+@EndUserText.label : 'department detail'
+@AbapCatalog.enhancement.category : #EXTENSIBLE_ANY
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #ALLOWED
+define table zdept_detail_10 {
+
+  key client    : abap.clnt not null;
+  key dept_id   : zdept_id_10 not null;
+  dept_name     : zdept_name_10;
+  dept_head     : zdept_head_10;
+  dept_location : zdept_location_10;
+
+}
