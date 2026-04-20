@@ -1,0 +1,169 @@
+CLASS zdept_10 DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+  interfaceS if_oo_adt_classrun.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zdept_10 IMPLEMENTATION.
+
+method if_oo_adt_classrun~main.
+data lt_dept tYPE sorted taBLE of zdept_detail_10 witH unIQUE kEY dept_id.
+data ls_dept type zdept_detail_10.
+
+data lt_emp type sorted table of zdept_detail_2 with uniQUE key emp_id.
+data ls_emp type zdept_detail_2.
+delete from zdept_detail_2.
+delETE fROM zdept_detail_10.
+
+ls_dept-dept_id = '01'.
+ls_dept-dept_name = 'AIML'.
+ls_dept-dept_head = 'KB'.
+ls_dept-dept_location = 'A-BLOCK'.
+
+insert ls_dept into table lt_dept.
+clear ls_dept.
+
+ls_dept-dept_id = '03'.
+ls_dept-dept_name = 'EEE'.
+ls_dept-dept_head = 'GH'.
+ls_dept-dept_location = 'B-BLOCK'.
+
+insert ls_dept into table lt_dept.
+clear ls_dept.
+
+
+ls_dept-dept_id = '02'.
+ls_dept-dept_name = 'CSE'.
+ls_dept-dept_head = 'SH'.
+ls_dept-dept_location = 'C-BLOCK'.
+
+insert ls_dept into table lt_dept.
+clear ls_dept.
+
+
+ls_dept-dept_id = '05'.
+ls_dept-dept_name = 'MECH'.
+ls_dept-dept_head = 'CM'.
+ls_dept-dept_location = 'A-BLOCK'.
+
+insert ls_dept into table lt_dept.
+clear ls_dept.
+
+
+ls_dept-dept_id = '07'.
+ls_dept-dept_name = 'CIVIL'.
+ls_dept-dept_head = 'RK'.
+ls_dept-dept_location = 'D-BLOCK'.
+
+insert ls_dept into table lt_dept.
+clear ls_dept.
+
+
+ls_dept-dept_id = '04'.
+ls_dept-dept_name = 'CSE'.
+ls_dept-dept_head = 'PH'.
+ls_dept-dept_location = 'D-BLOCK'.
+
+insert ls_dept into table lt_dept.
+clear ls_dept.
+
+
+ls_dept-dept_id = '06'.
+ls_dept-dept_name = 'CSBS'.
+ls_dept-dept_head = 'SH'.
+ls_dept-dept_location = 'D-BLOCK'.
+
+insert ls_dept into table lt_dept.
+clear ls_dept.
+
+
+INSERT ZDEPT_DETAIL_10 FROM TABLE @lt_dept.
+
+
+
+
+LS_EMP-emp_id = 'AB226'.
+LS_EMP-dept_id = '06'.
+LS_EMP-emp_name = 'RAMU'.
+LS_EMP-emp_salary = '20000'.
+
+insert ls_emp into table lt_emp.
+clear ls_emp.
+
+LS_EMP-emp_id = 'AB221'.
+LS_EMP-dept_id = '01'.
+LS_EMP-emp_name = 'NAVEEN'.
+LS_EMP-emp_salary = '20000'.
+
+insert ls_emp into table lt_emp.
+clear ls_emp.
+
+
+LS_EMP-emp_id = 'AB223'.
+LS_EMP-dept_id = '03'.
+LS_EMP-emp_name = 'SURYA'.
+LS_EMP-emp_salary = '20000'.
+
+insert ls_emp into table lt_emp.
+clear ls_emp.
+
+
+
+LS_EMP-emp_id = 'AB227'.
+LS_EMP-dept_id = '07'.
+LS_EMP-emp_name = 'SURESH'.
+LS_EMP-emp_salary = '20000'.
+
+insert ls_emp into table lt_emp.
+clear ls_emp.
+
+
+
+LS_EMP-emp_id = 'AB224'.
+LS_EMP-dept_id = '04'.
+LS_EMP-emp_name = 'SANJAY'.
+LS_EMP-emp_salary = '20000'.
+
+insert ls_emp into table lt_emp.
+clear ls_emp.
+
+
+
+LS_EMP-emp_id = 'AB222'.
+LS_EMP-dept_id = '02'.
+LS_EMP-emp_name = 'AJAY'.
+LS_EMP-emp_salary = '20000'.
+
+insert ls_emp into table lt_emp.
+clear ls_emp.
+
+LS_EMP-emp_id = 'AB225'.
+LS_EMP-dept_id = '05'.
+LS_EMP-emp_name = 'RAJU'.
+LS_EMP-emp_salary = '20000'.
+
+insert ls_emp into table lt_emp.
+clear ls_emp.
+
+INSERT ZDEPT_DETAIL_2 FROM TABLE @LT_emp.
+
+SELECT a~emp_name,
+a~emp_id,a~emp_salary,
+       b~dept_id
+FROM zdept_detail_2 AS a
+INNER JOIN zdept_detail_10 AS b
+ON a~dept_id = b~dept_id
+INTO TABLE @DATA(lt_result).
+
+out->write( lt_result ).
+
+
+endMETHOD.
+ENDCLASS.
